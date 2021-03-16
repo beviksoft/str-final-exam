@@ -19,4 +19,13 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  delete(id: number): void {
+    this.userService.delete(id).subscribe();
+    document.location.reload();
+  }
+
+  onConfirmDelete(id: number): void {
+    confirm(`Do you really want to delete this user? #${id}`) && this.delete(id);
+  }
 }
