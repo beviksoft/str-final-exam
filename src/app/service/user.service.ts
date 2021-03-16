@@ -40,17 +40,20 @@ export class UserService {
     return this.http.delete<User>( `${this.endpoint}/${user}` );
   }
 
-
   /**
    * Create a user in the database.
    * The method is: this.http.post
    */
-
-
+  create(user: User): Observable<any> {
+    return this.http.post<Observable<any>>(`${this.endpoint}`, user);
+  }
 
   /**
    * Update a user in the database.
    * The method is: this.http.patch
    */
+  update(user: User): Observable<any> {
+    return this.http.patch<any>(`${this.endpoint}/${user.id}`, user);
+  }
 
 }
