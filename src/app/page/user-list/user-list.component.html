@@ -1,6 +1,14 @@
 <div class="row">
   <div class="col-12 mt-2">
     <h2>User List</h2>
+    <!-- Search user -->
+    <div class="input-group-prepend col-12 col-md-4">
+      <input [(ngModel)]="filterText" class="form-control" type="text" placeholder="Search by name...">
+      <button type="submit" class="btn btn-white btn-round btn-just-icon">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    <!-- Users table -->
     <table class="table table-striped">
       <thead>
         <tr>
@@ -13,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users$ | async">
+        <tr *ngFor="let user of users$ | async | userFilter:filterText">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
