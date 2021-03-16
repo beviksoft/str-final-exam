@@ -14,6 +14,10 @@ export class UserListComponent implements OnInit {
 
   filterText: string = '';
 
+  // Sorter
+  columnKey: string = '';
+
+
   constructor(
     private userService: UserService,
   ) { }
@@ -21,6 +25,10 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onColumnSelect(key: string) {
+    this.columnKey = key;
+    console.log(key);
+  }
 
   delete(id: number): void {
     this.userService.delete(id).subscribe();
